@@ -12,7 +12,7 @@ export const fetchGPTPrompt = async (prompt) => {
     const options2 = {
         model: "text-davinci-003",
         prompt,
-        temperature: 0.6,
+        temperature: 0.2, //change creativity
         max_tokens: 2024,
     }
     try {
@@ -56,8 +56,9 @@ export default async function (req, res) {
     try {
         // ADD DALL-E Here - Generate image based on text
         const style = "For kids, cartoon, simple, minimalistic, colorful, Kid Friendly"
+        const fire_timmy = "Timmy is a firefighter putting out a fire"
         // const dallePrompt = style + fetchGPTPrompt("Tell us a math story about the number PI for kids")
-        const dallePrompt = style + "Tell us a math story about the number PI for kids" 
+        const dallePrompt = style + fire_timmy
 
 
         const params = {
