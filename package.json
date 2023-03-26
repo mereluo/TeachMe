@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mereluo/TeachMe/issues"
   },
-  "homepage": "https://github.com/mereluo/TeachMe#readme"
+  "homepage": "https://github.com/mereluo/TeachMe#readme",
+  "dependencies": {
+    "openai": "^3.2.1"
+  }
 }
