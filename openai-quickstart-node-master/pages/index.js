@@ -9,7 +9,7 @@ export default function Home() {
   async function onSubmit(event) {
     event.preventDefault();
     try {
-      const response = await fetch("/api/generate", {
+      const response = await fetch("/api/dalle", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,10 +34,12 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
+        <title>TeachMe</title>
         <link rel="icon" href="/dog.png" />
       </Head>
+      <nav>
 
+      </nav>
       <main className={styles.main}>
         <img src="/dog.png" className={styles.icon} />
         <h3>Name my pet</h3>
