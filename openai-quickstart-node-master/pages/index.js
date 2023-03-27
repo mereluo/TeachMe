@@ -4,7 +4,8 @@ import styles from "./index.module.css";
 
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
-  const [result, setResult] = useState();
+  const [imgResult, setImgResult] = useState();
+  const [txtResult, setTxtResult] = useState();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -21,27 +22,30 @@ export default function Home() {
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
+      
+      console.log(data);
 
-      setResult(data.result);
+      setImgResult(data.result.img);
+      setTxtResult(data.result.data);
       setAnimalInput("");
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
-      alert(error.message);
+      // alert(error.message);
     }
   }
 
   return (
     <div>
       <Head>
-        <title>TeachMe</title>
+        <title>StoryLand</title>
      </Head>
       <nav>
 
       </nav>
       <main className={styles.main}>
         {/* <img src="/dog.png" className={styles.icon} /> */}
-        <h3>TeachMe</h3>
+        <h3>StoryLand</h3>
         <p>Be part of your own story, a new interactive learning method for children that's engaging. </p>
         <img src="/avatar.png" className={styles.icon} />
         <form onSubmit={onSubmit}>
@@ -68,7 +72,12 @@ export default function Home() {
         </form>
         <h4>Your Story: </h4>
         <p>Images and text will be shown below</p>
-        <div>{result}</div>
+      
+        <div>
+          <img src={imgResult}>
+          </img>
+          <p>{txtResult}</p>
+      </div>
 
         <h4>Let your student learn interactively </h4>
         <p>Quiz your student on what they learned</p>

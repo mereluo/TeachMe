@@ -55,22 +55,38 @@ export default async function (req, res) {
 
     try {
         // ADD DALL-E Here - Generate image based on text
-        const style = "For kids, cartoon, simple, minimalistic, colorful, Kid Friendly"
-        const fire_timmy = "Timmy is a firefighter putting out a fire"
-        // const dallePrompt = style + fetchGPTPrompt("Tell us a math story about the number PI for kids")
-        const dallePrompt = style + fire_timmy
+        const style = "For kids, cartoon, simple, minimalistic, colorful, Kid Friendly: ";
+        const fire_timmy =  await fetchGPTPrompt(animal)
+        const dallePrompt = style + fire_timmy 
+
+
+        const truck_prompt = dallePrompt.slice(0, 250)
+        console.log('truck_prompt', truck_prompt)
+
+        
+        // const allePrompt = style + fire_timmy
 
 
         const params = {
-            prompt: dallePrompt,
+            prompt: truck_prompt,
             n: 1,
             size: "1024x1024",
         }
 
         const response = await openai.createImage(params);
         const agentImg = response.data.data[0].url;
-        console.log(dallePrompt)
-        console.log(agentImg)
+
+        const result = {
+            img: agentImg, 
+            data: fire_timmy
+        }
+
+        // console.log(dallePrompt)
+        // console.log(agentImg)
+        res.status(200).json({
+            result
+        });
+        // return response
 
     } catch (error) {
         // Consider adjusting the error handling logic for your use case

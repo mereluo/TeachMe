@@ -13,7 +13,7 @@ const prompts = ['What is a circle?', "What is PI?"]
 const prompt = "Write 100 words story about PI for kids"
 
 // const options = {
-//     engine: 'davinci',
+//     engine: 'davinci', 
 //     prompt,
 //     model: 'davinci',
 //     maxTokens: 2024,
@@ -25,7 +25,7 @@ const options2 = {
     model: "text-davinci-003",
     prompt,
     temperature: 0.6,
-    max_tokens: 2024,
+    max_tokens: 512,
 }
 
 export const fetchPrompt = async (req, res) => {
