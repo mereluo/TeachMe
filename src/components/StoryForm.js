@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/index.module.css";
+import Button from 'react-bootstrap/Button';
 
 const StoryForm = ({ onSubmit, animalInput, setAnimalInput }) => {
   return (
@@ -17,7 +17,10 @@ const StoryForm = ({ onSubmit, animalInput, setAnimalInput }) => {
         value={animalInput}
         onChange={(e) => setAnimalInput(e.target.value)}
       />
-      <input type="submit" value="Create Story" />
+      {/* <input type="submit" value="Create Story" /> */}
+      <Button type="submit" variant="success">
+        Create Story
+      </Button>
     </form>
   );
 };

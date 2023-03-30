@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import StoryForm from "../components/StoryForm";
 import StoryResult from "../components/StoryResult";
 import QuizSection from "../components/QuizSection";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Home() {
