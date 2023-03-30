@@ -5,8 +5,6 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-
-
 export const fetchGPTPrompt = async (prompt) => {
     const options2 = {
         model: "text-davinci-003",
