@@ -56,13 +56,13 @@ export default async function (req, res) {
         // ADD DALL-E Here - Generate image based on text
         const style = "For kids, cartoon, simple, minimalistic, colorful, Kid Friendly: ";
         const fire_timmy =  await fetchGPTPrompt(animal)
-        const dallePrompt = style + fire_timmy 
+        const dallePrompt = style + fire_timmy
 
 
         const truck_prompt = dallePrompt.slice(0, 250)
         console.log('truck_prompt', truck_prompt)
 
-        
+
         // const allePrompt = style + fire_timmy
 
 
@@ -76,7 +76,7 @@ export default async function (req, res) {
         const agentImg = response.data.data[0].url;
 
         const result = {
-            img: agentImg, 
+            img: agentImg,
             data: fire_timmy
         }
 
