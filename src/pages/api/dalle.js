@@ -6,6 +6,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export const fetchGPTPrompt = async (prompt) => {
+    prompt += ". Please Make it only 3 Sentences"; 
     const options2 = {
         model: "text-davinci-003",
         prompt,
@@ -39,6 +40,7 @@ export default async function (req, res) {
         return;
     }
 
+    // Get user prompt 
     const userPromt= req.body.userPromt|| '';
     if (userPromt.trim().length === 0) {
         res.status(400).json({
@@ -50,45 +52,32 @@ export default async function (req, res) {
     }
 
     try {
-        // ADD DALL-E Here - Generate image based on text
         const style = "For kids, cartoon, simple, minimalistic, colorful, Kid Friendly: ";
         const generatedStory =  await fetchGPTPrompt(userPromt)
-        const sentences = generatedStory.split(/(\.|\?|!)/);
+        const sentences = generatedStory.split(/\.|\?|!|\n/).filter((sentence) => sentence.trim() !== '');
         console.log("sentences:", sentences)
-        const dallePrompt = style + generatedStory
 
 
-        // const truck_prompt = 
-        // console.log('truck_prompt', truck_prompt)
-
-
-        // const allePrompt = style + generatedStory
-
-
-        const params = {
-            prompt: dallePrompt.slice(0, 250),
-            n: 6,
-            size: "256x256",
-        }
-
-        const response = await openai.createImage(params);
-
+        // const dallePrompt = style + generatedStory
         const arrayOfImages = []
 
-        // console.log("For loop line 77")
-        const resImageData = response.data.data
-        for(let index in resImageData ){
-            // console.log(resImageData[index].url)
-            arrayOfImages.push(resImageData[index].url)
-        }
-        // console.log("Test 81 Images:", arrayOfImages)
-        const result = {
-            img: arrayOfImages,
-            data: generatedStory
+        for(let index in sentences ) {
+            const params = {
+                prompt: style + sentences[index],
+                n: 1,
+                size: "256x256",
+            }
+            const response = await openai.createImage(params);
+
+            arrayOfImages.push(response.data.data[0].url)
         }
 
-        // console.log(dallePrompt)
-        // console.log(agentImg)
+        const result = {
+            img: arrayOfImages,
+            data: sentences
+        }
+
+      
         res.status(200).json({
             result
         });

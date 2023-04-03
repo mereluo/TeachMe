@@ -7,9 +7,13 @@ const StoryResult = ({ imgResult, txtResult }) => {
       <p>Images and text will be shown below</p>
       <div>
         {imgResult && imgResult.map((imgSrc, index) => (
-          <img key={index} src={imgSrc} alt={`Image ${index}`} />
+          // <img key={index} src={imgSrc} alt={`Image ${index}`} /> 
+          <div key={index}>
+            <img src={imgSrc} alt={`Image ${index}`} />
+            <p>{txtResult[index]}</p>
+        </div>
         ))}
-        <p>{txtResult}</p>
+       
       </div>
     </div>
   );
