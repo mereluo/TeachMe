@@ -1,7 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 
-const StoryForm = ({ onSubmit, animalInput, setAnimalInput }) => {
+const StoryForm = ({ onSubmit, userPromptInput, setUserPromptInput }) => {
   return (
     <form onSubmit={onSubmit}>
       <p>Here are some example prompts you can try</p>
@@ -12,10 +12,10 @@ const StoryForm = ({ onSubmit, animalInput, setAnimalInput }) => {
       </ul>
       <input
         type="text"
-        name="animal"
+        name="userPromptInput"
         placeholder="Enter an prompt"
-        value={animalInput}
-        onChange={(e) => setAnimalInput(e.target.value)}
+        value={userPromptInput}
+        onChange={(e) => setUserPromptInput(e.target.value)}
       />
       {/* <input type="submit" value="Create Story" /> */}
       <Button type="submit" variant="success">
