@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Home() {
-  const [animalInput, setAnimalInput] = useState("");
+  const [userPromptInput, setUserPromptInput] = useState("");
   const [imgResult, setImgResult] = useState();
   const [txtResult, setTxtResult] = useState();
 
@@ -22,7 +22,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({ userPromt: userPromptInput }),
       });
 
       const data = await response.json();
@@ -33,7 +33,7 @@ export default function Home() {
     //   console.log(data);
       setImgResult(data.result.img);
       setTxtResult(data.result.data);
-      setAnimalInput("");
+      setUserPromptInput("");
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -50,8 +50,8 @@ export default function Home() {
         <Header />
         <StoryForm
           onSubmit={onSubmit}
-          animalInput={animalInput}
-          setAnimalInput={setAnimalInput}
+          userPromptInput={userPromptInput}
+          setUserPromptInput={setUserPromptInput}
         />
         <StoryResult imgResult={imgResult} txtResult={txtResult} />
         <QuizSection />

@@ -15,7 +15,7 @@ export const fetchGPTPrompt = async (prompt) => {
     try {
         const completion = await openai.createCompletion(options2);
         const result = completion.data.choices[0].text;
-        console.log("result: ", result);
+        // console.log("result: ", result);
         return result;
 
     } catch (error) {
@@ -27,7 +27,6 @@ export const fetchGPTPrompt = async (prompt) => {
             console.log(`Error with OpenAI API request: ${error.message}`);
         }
     }
-
 }
 
 export default async function (req, res) {
@@ -40,11 +39,11 @@ export default async function (req, res) {
         return;
     }
 
-    const animal = req.body.animal || '';
-    if (animal.trim().length === 0) {
+    const userPromt= req.body.userPromt|| '';
+    if (userPromt.trim().length === 0) {
         res.status(400).json({
             error: {
-                message: "Please enter a valid animal",
+                message: "Please enter a valid userPromt",
             }
         });
         return;
@@ -53,29 +52,39 @@ export default async function (req, res) {
     try {
         // ADD DALL-E Here - Generate image based on text
         const style = "For kids, cartoon, simple, minimalistic, colorful, Kid Friendly: ";
-        const fire_timmy =  await fetchGPTPrompt(animal)
-        const dallePrompt = style + fire_timmy
+        const generatedStory =  await fetchGPTPrompt(userPromt)
+        const sentences = generatedStory.split(/(\.|\?|!)/);
+        console.log("sentences:", sentences)
+        const dallePrompt = style + generatedStory
 
 
-        const truck_prompt = dallePrompt.slice(0, 250)
-        console.log('truck_prompt', truck_prompt)
+        // const truck_prompt = 
+        // console.log('truck_prompt', truck_prompt)
 
 
-        // const allePrompt = style + fire_timmy
+        // const allePrompt = style + generatedStory
 
 
         const params = {
-            prompt: truck_prompt,
-            n: 1,
-            size: "1024x1024",
+            prompt: dallePrompt.slice(0, 250),
+            n: 6,
+            size: "256x256",
         }
 
         const response = await openai.createImage(params);
-        const agentImg = response.data.data[0].url;
 
+        const arrayOfImages = []
+
+        // console.log("For loop line 77")
+        const resImageData = response.data.data
+        for(let index in resImageData ){
+            // console.log(resImageData[index].url)
+            arrayOfImages.push(resImageData[index].url)
+        }
+        // console.log("Test 81 Images:", arrayOfImages)
         const result = {
-            img: agentImg,
-            data: fire_timmy
+            img: arrayOfImages,
+            data: generatedStory
         }
 
         // console.log(dallePrompt)
@@ -101,15 +110,16 @@ export default async function (req, res) {
     }
 }
 
-// function generatePrompt(animal) {
-//     const capitalizedAnimal =
-//         animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-//     return `Suggest three names for an animal that is a superhero.
 
-// Animal: Cat
+// function generatePrompt(userPromt) {
+//     const capitalizeduserPromt=
+//         userPromt[0].toUpperCase() + userPromt.slice(1).toLowerCase();
+//     return `Suggest three names for an userPromtthat is a superhero.
+
+// userPromt: Cat
 // Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-// Animal: Dog
+// userPromt: Dog
 // Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-// Animal: ${capitalizedAnimal}
+// userPromt: ${capitalizeduserPromt}
 // Names:`;
 // }
