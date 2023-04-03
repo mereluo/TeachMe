@@ -5,6 +5,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+
 export const fetchGPTPrompt = async (prompt) => {
     prompt += ". Please Make it only 3 Sentences"; 
     const options2 = {
