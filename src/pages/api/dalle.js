@@ -1,4 +1,9 @@
 import { Configuration, OpenAIApi } from "openai";
+import fs from "fs";
+import path from "path";
+
+const avatarURL = path.join(process.cwd(), 'public', 'avatar.png');
+const maskURL = path.join(process.cwd(), 'public', 'mask.png');
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -7,7 +12,7 @@ const openai = new OpenAIApi(configuration);
 
 
 export const fetchGPTPrompt = async (prompt) => {
-    prompt += ". Please Make it only 3 Sentences"; 
+    prompt += ". Please Make it only 3 Sentences";
     const options2 = {
         model: "text-davinci-003",
         prompt,
@@ -41,7 +46,7 @@ export default async function (req, res) {
         return;
     }
 
-    // Get user prompt 
+    // Get user prompt
     const userPromt= req.body.userPromt|| '';
     if (userPromt.trim().length === 0) {
         res.status(400).json({
@@ -63,13 +68,18 @@ export default async function (req, res) {
         const arrayOfImages = []
 
         for(let index in sentences ) {
-            const params = {
-                prompt: style + sentences[index],
-                n: 1,
-                size: "256x256",
-            }
-            const response = await openai.createImage(params);
-
+            // const params = {
+            //     prompt: style + sentences[index],
+            //     n: 1,
+            //     size: "256x256"
+            // }
+            const response = await openai.createImageEdit(
+                fs.createReadStream(avatarURL),
+                fs.createReadStream(maskURL),
+                style + sentences[index],
+                1,
+                "256x256"
+            );
             arrayOfImages.push(response.data.data[0].url)
         }
 
@@ -78,7 +88,7 @@ export default async function (req, res) {
             data: sentences
         }
 
-      
+
         res.status(200).json({
             result
         });
