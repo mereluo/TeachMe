@@ -1,0 +1,18 @@
+.contentbg{
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    padding:10px;
+    color: white;
+    font-size: 16px;
+}
+
+.block_size{
+    width: 600px;
+    height: 600px;
+}
+
+.title{
+    font-size: 1em;
+    margin-top: 15px;
+  }

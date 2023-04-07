@@ -13,10 +13,12 @@ export default function Home() {
   const [userPromptInput, setUserPromptInput] = useState("");
   const [imgResult, setImgResult] = useState();
   const [txtResult, setTxtResult] = useState();
+  const [status, setStatus] = useState("empty");//empty loading finished
 
   async function onSubmit(event) {
     event.preventDefault();
     try {
+      setStatus("loading");
       const response = await fetch("/api/dalle", {
         method: "POST",
         headers: {
@@ -27,9 +29,10 @@ export default function Home() {
 
       const data = await response.json();
       if (response.status !== 200) {
+        setStatus("empty");
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-
+      setStatus("finish");
     //   console.log(data);
       setImgResult(data.result.img);
       setTxtResult(data.result.data);
@@ -52,8 +55,11 @@ export default function Home() {
           onSubmit={onSubmit}
           userPromptInput={userPromptInput}
           setUserPromptInput={setUserPromptInput}
+          status={status}
         />
-        <StoryResult imgResult={imgResult} txtResult={txtResult} />
+        {status =="finish"&&(
+          <StoryResult imgResult={imgResult} txtResult={txtResult} />
+        )}
         <QuizSection />
       </main>
     </div>
