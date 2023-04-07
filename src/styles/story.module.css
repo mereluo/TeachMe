@@ -16,3 +16,13 @@
     font-size: 1em;
     margin-top: 15px;
   }
+
+  .btn{
+    background-color: #ff7700 !important;
+    color:white ;
+    border: none !important;
+  }
+  .input{
+    margin-top: 20px;
+    border: 2px solid #ff7700 !important;
+  }

@@ -1,0 +1,32 @@
+.navbar {
+    background-color: #ff7700;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+  
+  .navbarList {
+    list-style-type: none;
+    display: flex;
+  }
+  .navbar img{
+    margin-left: 12px;
+    float: left;
+    max-height: 90%;
+    border-radius: 10px;
+  }
+  .navbarItem {
+    margin-right: 10px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .navbarItem:hover {
+    color: #ffcc00;
+  }
+  

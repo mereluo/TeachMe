@@ -28,7 +28,9 @@
   font-size: 22px;
 }
 .main .icon {
+  /* margin-top: 100px; */
   width:200px;
+  border-radius: 10px;
 }
 .main h3 {
   font-size: 32px;
@@ -68,4 +70,21 @@
 }
 .btn {
   background-color: orange;
+}
+
+/* Add the following CSS to your story.module.css file or any other CSS file you're using */
+
+/* Input border color */
+input.form-control {
+  border-color: orange !important; /* Use !important to override default Bootstrap styles */
+}
+
+/* Button background color and text color */
+.button-orange {
+  background-color: orange !important; /* Use !important to override default Bootstrap styles */
+  color: #fff; /* Set the text color to white or any other color you prefer */
+}
+
+.quote{
+  margin-top: 100px;
 }

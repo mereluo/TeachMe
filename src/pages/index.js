@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import StoryForm from "../components/StoryForm";
 import StoryResult from "../components/StoryResult";
 import QuizSection from "../components/QuizSection";
+import Navbar from "../components/Navbar"; // Import the Navbar component
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -49,6 +50,7 @@ export default function Home() {
       <Head>
         <title>StoryLand</title>
       </Head>
+      <Navbar /> {/* Render the Navbar component */}
       <main className={styles.main}>
         <Header />
         <StoryForm
