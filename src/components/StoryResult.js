@@ -30,13 +30,12 @@ const StoryResult = ({ imgResult, txtResult }) => {
       </Carousel>
       {/* <div>
         {imgResult && imgResult.map((imgSrc, index) => (
-          // <img key={index} src={imgSrc} alt={`Image ${index}`} /> 
+          // <img key={index} src={imgSrc} alt={`Image ${index}`} />
           <div key={index}>
             <img src={imgSrc} alt={`Image ${index}`} />
             <p>{txtResult[index]}</p>
         </div>
         ))}
-       
       </div> */}
     </div>
   );
