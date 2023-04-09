@@ -1,6 +1,7 @@
 import React,{ useState }  from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import styles from '../styles/story.module.css'
+import HTMLFlipBook from 'react-pageflip';
 
 const StoryResult = ({ imgResult, txtResult }) => {
   const [index, setIndex] = useState(0);
@@ -9,35 +10,43 @@ const StoryResult = ({ imgResult, txtResult }) => {
   };
 
   return (
-    <div>
-      <h4 class={styles.title}>Your Story: </h4>
-      {/* <p>Images and text will be shown below</p> */}
-      <Carousel  slide={false} interval={null} activeIndex={index} onSelect={handleSelect}>
-        {imgResult && imgResult.map((imgSrc, index) => (
-          // // className="d-block w-100"
-          <Carousel.Item >
+    <>
+      <h4 class={styles.title}> </h4>
+       <HTMLFlipBook width={300} height={500} className={`${styles.book}`}>
+       <div className={`demoPage ${styles.book} ${styles.cover}`}>
+              <h4 className={`${styles.title}`}>{"My Wonderful Story"}</h4>
+              <img src="/avatar.png" className={styles.coverImg} />
+              <p className={`${styles.author}`}><span>Created By: </span>"Me !"</p>
+          </div>
+          <div  className={`demoPage ${styles.summary}`}>
+            <h4>Summary:</h4>
+            <p >This book is the great adventure of Luffy the soon to be king of the pirates!</p>
+          </div>
+
+       {imgResult && imgResult.map((imgSrc, index) => (
+        
+        <div className={`demoPage ${styles.page}`}>
             <img
-              className={`d-block ${styles.block_size}`}
               src={imgSrc}
               alt={`Image ${index}`}
             />
-            <Carousel.Caption>
-              {/* <h3>First slide label</h3> */}
-              <p class={styles.contentbg}>{txtResult[index]}</p>
-            </Carousel.Caption>
-        </Carousel.Item>
+            <p >{txtResult[index]}</p>
+      
+         </div>
+
+
         ))}
-      </Carousel>
-      {/* <div>
-        {imgResult && imgResult.map((imgSrc, index) => (
-          // <img key={index} src={imgSrc} alt={`Image ${index}`} />
-          <div key={index}>
-            <img src={imgSrc} alt={`Image ${index}`} />
-            <p>{txtResult[index]}</p>
-        </div>
-        ))}
-      </div> */}
-    </div>
+         <div className={`demoPage ${styles.end}`}>
+            
+            <h4>The End!</h4>
+      
+         </div>    
+        </HTMLFlipBook>
+        </>
+
+
+      
+
   );
 };
 
