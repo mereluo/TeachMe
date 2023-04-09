@@ -27,3 +27,56 @@
     border: 2px solid #ff7700 !important;
     border-radius: 0.7rem;
 }
+.book{
+    box-shadow: 1px 2px 2px 2px black;
+    /* background-color: orange; */
+}
+
+
+.book img, .book p{
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    
+}
+.title{
+    text-align: center;
+    color:white;
+    font-weight: bold;
+    font-size: 28px;
+    
+}
+.author{
+    text-align: center;
+    margin-top: 200px;
+    color: white;
+}
+.cover{
+    background-color:#ff7700;
+    border: 1px solid black;
+   
+}
+.cover img{
+    max-width: 300px;
+    margin: auto;
+}
+.summary h4{
+    text-align: center;
+    color:#ff7700;
+    margin-top: 20px;
+}
+.page{
+    border: solid black 1px; 
+}
+.end{
+    background-color: #ff7700;
+    text-align: center;
+    padding: 20px;
+}
+.end h4{
+    color: white; 
+    font-weight: bold;
+    font-size: 32px;
+    
+}
+
