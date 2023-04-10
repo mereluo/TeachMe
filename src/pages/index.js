@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import styles from "../styles/index.module.css";
 import Header from "../components/Header";
+import KidsInfo from "../components/KidsInfo";
 import StoryForm from "../components/StoryForm";
 import StoryResult from "../components/StoryResult";
 import QuizSection from "../components/QuizSection";
@@ -15,6 +16,7 @@ export default function Home() {
   const [imgResult, setImgResult] = useState();
   const [txtResult, setTxtResult] = useState();
   const [status, setStatus] = useState("empty");//empty loading finished
+  const [childName, setChildName] = useState("");
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -53,6 +55,8 @@ export default function Home() {
       <Navbar /> {/* Render the Navbar component */}
       <main className={styles.main}>
         <Header />
+        <KidsInfo childName={childName} setChildName={setChildName} />
+            <h4>Welcome {`${childName}!`} Your story begins from here!</h4>
         <StoryForm
           onSubmit={onSubmit}
           userPromptInput={userPromptInput}
@@ -60,7 +64,9 @@ export default function Home() {
           status={status}
         />
         {status =="finish"&&(
-          <StoryResult imgResult={imgResult} txtResult={txtResult} />
+          <StoryResult imgResult={imgResult}
+          txtResult={txtResult}
+          childName={childName} />
         )}
         <QuizSection />
       </main>

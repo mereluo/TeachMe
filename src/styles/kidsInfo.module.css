@@ -1,0 +1,32 @@
+.container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.formGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.formLabel {
+    width: 40%;
+    margin-right: 10px;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    white-space: nowrap;
+}
+
+.formControl {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60%;
+    margin-right: 10px;
+}
+
