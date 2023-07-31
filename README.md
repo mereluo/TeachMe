@@ -7,18 +7,18 @@ StoryLand is an innovative web application that aims to provide an engaging and 
 ## Screenshots
 
 <div style="display: flex; justify-content: center;">
-    <img src="public/screenshot1.png" alt="screenshot1" width="350" height="280" />
+    <img src="public/screenshot1.png" alt="screenshot1" width="600" height="450" />
         <p style="font-style: italic;">The welcome page - kid can type their name</p>
 </div>
 <div style="display: flex; justify-content: center;">
-    <img src="public/screenshot2.png" alt="screenshot2" width="350" height="280" /> <p style="font-style: italic;">Kid can type in what story topic they want to explore</p>
+    <img src="public/screenshot2.png" alt="screenshot2" width="600" height="450" /> <p style="font-style: italic;">Kid can type in what story topic they want to explore</p>
 </div>
 <div style="display: flex; justify-content: center;">
-    <img src="public/screenshot3.png" alt="screenshot3" width="350" height="280" />
+    <img src="public/screenshot3.png" alt="screenshot3" width="600" height="450" />
     <p style="font-style: italic;">Generated story content Part I</p>
 </div>
 <div style="display: flex; justify-content: center;">
-    <img src="public/screenshot4.png" alt="screenshot4" width="350" height="280" />
+    <img src="public/screenshot4.png" alt="screenshot4" width="600" height="450" />
     <p style="font-style: italic;">Generated story content Part II</p>
 </div>
 
