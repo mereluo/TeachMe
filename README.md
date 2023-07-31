@@ -1,19 +1,26 @@
 # StoryLand
 
-![StoryLand Logo](public/StoryLandLogo.png)
+<img src="public/StoryLandLogo.png" alt="StoryLand Logo" width="100" height="100" />
 
 StoryLand is an innovative web application that aims to provide an engaging and personalized storytelling experience for children aged 5 to 10. By combining the power of React.js and the OpenAI API, StoryLand dynamically generates captivating stories with high-quality illustrations, tailored to each child's unique prompts.
 
 ## Screenshots
 
-![screenshot1](public/screenshot1.png)
-_The welcome page - kid can type their name_
-![screenshot2](public/screenshot2.png)
-_Kid can type in what story topic they want to explore_
-![screenshot3](public/screenshot3.png)
-_Generated story content Part I_
-![screenshot4](public/screenshot4.png)
-_Generated story content Part II_
+<div style="display: flex; justify-content: center;">
+    <img src="public/screenshot1.png" alt="screenshot1" width="350" height="280" />
+        <p style="font-style: italic;">The welcome page - kid can type their name</p>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img src="public/screenshot2.png" alt="screenshot2" width="350" height="280" /> <p style="font-style: italic;">Kid can type in what story topic they want to explore</p>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img src="public/screenshot3.png" alt="screenshot3" width="350" height="280" />
+    <p style="font-style: italic;">Generated story content Part I</p>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img src="public/screenshot4.png" alt="screenshot4" width="350" height="280" />
+    <p style="font-style: italic;">Generated story content Part II</p>
+</div>
 
 ## How it Works
 
